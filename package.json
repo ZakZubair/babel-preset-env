@@ -16,10 +16,11 @@
     "dev": "babel -w src -d lib",
     "fix": "eslint . --fix",
     "lint": "eslint .",
-    "prepublish": "npm run build",
+    "prepublish": "yarn run snyk-protect && npm run build",
     "test": "npm run build && npm run test-only",
     "test-ci": "nyc npm run test",
-    "test-only": "mocha ./test --compilers js:babel-register -t 10000"
+    "test-only": "mocha ./test --compilers js:babel-register -t 10000",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "babel-plugin-check-es2015-constants": "^6.22.0",
@@ -51,7 +52,8 @@
     "babel-plugin-transform-regenerator": "^6.22.0",
     "browserslist": "^2.1.2",
     "invariant": "^2.2.2",
-    "semver": "^5.3.0"
+    "semver": "^5.3.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -98,5 +100,6 @@
     ],
     "instrument": false,
     "sourceMap": false
-  }
+  },
+  "snyk": true
 }
